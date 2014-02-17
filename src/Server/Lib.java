@@ -1,6 +1,7 @@
 package Server;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -203,6 +204,7 @@ public class Lib {
 			try {
 				createUser(server.accept());
 				System.out.println("User conected!");
+				sendData("LOL",users.get(users.size()).getSocket());
 			} catch (IOException e) {
 				error("Could not create new user",e.toString());
 			}
@@ -217,5 +219,16 @@ public class Lib {
 		User user = new User(socket);
 		users.add(user);
 		user.start();
+	}
+	
+	public static void sendData(String data, Socket socket)
+	{
+		 try {
+			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+			out.writeChars(data);
+		} catch (IOException e) {
+			error("Could not open DataOutputStream. ", e.toString());
+			e.printStackTrace();
+		}
 	}
 }

@@ -15,7 +15,7 @@ public class ServerThread extends Thread{
 	 */
 	private final int STRINGS = 1;
 	private final int OBJECTS = 2;
-	private int mode = 1;
+	private int mode = STRINGS;
 	private ObjectOutputStream outStream;
 	private ObjectInputStream inStream;
 	private Socket socket;

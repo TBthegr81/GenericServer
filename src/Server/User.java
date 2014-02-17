@@ -29,4 +29,9 @@ public class User {
 	{
 		
 	}
+	
+	public Socket getSocket()
+	{
+		return openForConnections;
+	}
 }
